@@ -8,7 +8,7 @@
     android:layout_margin="20dp"
 
     app:cardBackgroundColor="#F3F3F3"
-    app:cardCornerRadius="15dp">
+    app:cardCornerRadius="7dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_height="0dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.55"
+            app:layout_constraintHeight_percent="0.65"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/test_pic" />
@@ -28,7 +28,7 @@
         <TextView
             android:id="@+id/newsHeader"
             style="@style/NewsHeaderTextView"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/HeaderPic"
@@ -38,7 +38,7 @@
             android:id="@+id/newsDescription"
             style="@style/NewsDescriptionTextView"
             android:layout_margin="5dp"
-            android:lines="3"
+            android:maxLines="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newsHeader"

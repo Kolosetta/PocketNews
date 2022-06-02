@@ -10,6 +10,13 @@ public class News {
     private String url;
     private String category;
 
+    public News(String title, String description, String pubDate, String category) {
+        this.title = title;
+        this.description = description;
+        this.pubDate = pubDate;
+        this.category = category;
+    }
+
     public News(String author, String title, String link, String description, String pubDate, String url, String category) {
         this.author = author;
         this.title = title;
