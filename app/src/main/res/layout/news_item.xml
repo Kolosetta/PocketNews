@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+
+    app:cardBackgroundColor="#F3F3F3"
+    app:cardCornerRadius="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/HeaderPic"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.55"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/test_pic" />
+
+        <TextView
+            android:id="@+id/newsHeader"
+            style="@style/NewsHeaderTextView"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HeaderPic"
+            tools:text="Заголовок новости" />
+
+        <TextView
+            android:id="@+id/newsDescription"
+            style="@style/NewsDescriptionTextView"
+            android:layout_margin="5dp"
+            android:lines="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsHeader"
+            tools:text="Тут само содержание новости. Тут само содержание новости. Тут само содержание новости. Тут само содержание новости. Тут само содержание новости. Тут само содержание новости." />
+
+
+        <TextView
+            android:id="@+id/newsPublishDate"
+            style="@style/NotesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newsDescription"
+            tools:text="02 июня 2022" />
+
+        <TextView
+            android:id="@+id/newsTag"
+            style="@style/NotesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/newsPublishDate"
+            app:layout_constraintTop_toBottomOf="@+id/newsDescription"
+            tools:text="Херня" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
