@@ -1,5 +1,6 @@
 package com.example.pocketnews;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +56,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setNews(List<News> news) {
         this.news = news;
+        notifyDataSetChanged();
     }
 
 }

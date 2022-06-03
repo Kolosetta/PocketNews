@@ -1,31 +1,25 @@
 package com.example.pocketnews.pojo;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
+@Root(name = "item", strict = false)
 public class News {
 
+    @Element(name = "author", required = false)
     private String author;
+    @Element(name = "title", required = false)
     private String title;
-    private String link;
-    private String description;
-    private String pubDate;
-    private String url;
+    @Element(name = "category", required = false)
     private String category;
-
-    public News(String title, String description, String pubDate, String category) {
-        this.title = title;
-        this.description = description;
-        this.pubDate = pubDate;
-        this.category = category;
-    }
-
-    public News(String author, String title, String link, String description, String pubDate, String url, String category) {
-        this.author = author;
-        this.title = title;
-        this.link = link;
-        this.description = description;
-        this.pubDate = pubDate;
-        this.url = url;
-        this.category = category;
-    }
+    @Element(name = "link", required = false)
+    private String link;
+    @Element(name = "description", required = false)
+    private String description;
+    @Element(name = "pubDate", required = false)
+    private String pubDate;
+    @Element(name = "enclosure url", required = false)
+    private String url;
 
     public String getAuthor() {
         return author;
