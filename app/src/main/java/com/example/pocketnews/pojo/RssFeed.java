@@ -10,21 +10,10 @@ import java.util.List;
 
 @Root(name = "rss", strict = false)
 public class RssFeed {
-    @Element(name="title")
-    @Path("channel")
-    private String channelTitle;
 
     @ElementList(name="item", inline=true, required = false)
     @Path("channel")
     private List<News> newsList;
-
-    public String getChannelTitle() {
-        return channelTitle;
-    }
-
-    public void setChannelTitle(String channelTitle) {
-        this.channelTitle = channelTitle;
-    }
 
     public List<News> getNewsList() {
         return newsList;

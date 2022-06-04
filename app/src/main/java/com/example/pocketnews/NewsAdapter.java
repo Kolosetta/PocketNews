@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocketnews.pojo.News;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +29,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-        News novost = news.get(position);
-        holder.title.setText(novost.getTitle());
-        holder.description.setText(novost.getDescription());
-        holder.pubDate.setText(novost.getPubDate());
-        holder.category.setText(novost.getCategory());
+        News newsOne = news.get(position);
+        holder.title.setText(newsOne.getTitle());
+        holder.description.setText(newsOne.getDescription());
+        holder.pubDate.setText(newsOne.getPubDate());
+        holder.category.setText(newsOne.getCategory());
+        Picasso.get().load(newsOne.getEnclosure().getUrl()).into(holder.image);
     }
 
     @Override
@@ -41,6 +44,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     protected class NewsViewHolder extends RecyclerView.ViewHolder{
 
+        private ImageView image;
         private TextView title;
         private TextView description;
         private TextView pubDate;
@@ -48,13 +52,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
+            image = itemView.findViewById(R.id.HeaderPic);
             title = itemView.findViewById(R.id.newsHeader);
             description = itemView.findViewById(R.id.newsDescription);
             pubDate = itemView.findViewById(R.id.newsPublishDate);
             category = itemView.findViewById(R.id.newsTag);
         }
     }
-
 
     @SuppressLint("NotifyDataSetChanged")
     public void setNews(List<News> news) {

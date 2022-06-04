@@ -1,11 +1,11 @@
 package com.example.pocketnews.pojo;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(name = "item", strict = false)
 public class News {
-
     @Element(name = "author", required = false)
     private String author;
     @Element(name = "title", required = false)
@@ -18,8 +18,16 @@ public class News {
     private String description;
     @Element(name = "pubDate", required = false)
     private String pubDate;
-    @Element(name = "enclosure url", required = false)
-    private String url;
+    @Element(name = "enclosure", required = false)
+    private Enclosure enclosure;
+
+    public Enclosure getEnclosure() {
+        return enclosure;
+    }
+
+    public void setEnclosure(Enclosure enclosure) {
+        this.enclosure = enclosure;
+    }
 
     public String getAuthor() {
         return author;
@@ -28,7 +36,6 @@ public class News {
     public void setAuthor(String author) {
         this.author = author;
     }
-
     public String getTitle() {
         return title;
     }
@@ -61,13 +68,6 @@ public class News {
         this.pubDate = pubDate;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     public String getCategory() {
         return category;
