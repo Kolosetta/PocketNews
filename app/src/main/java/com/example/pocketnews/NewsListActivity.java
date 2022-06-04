@@ -8,20 +8,16 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.pocketnews.pojo.News;
-import com.example.pocketnews.pojo.NewsPojo;
 import com.example.pocketnews.pojo.RssFeed;
 
-import org.simpleframework.xml.Default;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
-
 import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
@@ -38,15 +34,6 @@ public class NewsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         adapter = new NewsAdapter();
 
-
-        ArrayList<News> news = new ArrayList<>();
-        /*news.add(new News("Новость 1","Настройка основной панель действий требует, чтобы ваше приложение использовало тему деятельности, которая разрешает панель действий. Как запросить такую тему зависит от минимальной поддерживаемой версии Android вашим приложением","9 декабря 2022","Животные"));
-        news.add(new News("Новость 2","Настройка основной панель действий требует, чтобы ваше приложение использовало тему деятельности, которая разрешает панель действий. Как запросить такую тему зависит от минимальной поддерживаемой версии Android вашим приложением","8 декабря 2022","Факты"));
-        news.add(new News("Новость 3","Настройка основной панель действий требует, чтобы ваше приложение использовало тему деятельности, которая разрешает панель действий. Как запросить такую тему зависит от минимальной поддерживаемой версии Android вашим приложением","17 декабря 2023","Животные"));
-        news.add(new News("Новость 4","Какая-то ифна","22 декабря 2022","Политика"));
-        news.add(new News("Новость 5","Какая-то ифна","3 декабря 2021","Животные"));*/
-
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://lenta.ru/")
                 .addConverterFactory(SimpleXmlConverterFactory.create())
@@ -61,8 +48,12 @@ public class NewsListActivity extends AppCompatActivity {
                 .subscribe(new Consumer<RssFeed>() {
                     @Override
                     public void accept(RssFeed response) throws Exception { // Метод срабатывает при успешном приеме данных
-                        Log.i("Lol", response.getNewsList().get(0).getAuthor());
-                        adapter.setNews(response.getNewsList());
+                        List<News> newsList = response.getNewsList();
+                        newsList.forEach(news1 -> news1.setDescription(news1.getDescription().replace("\n", "").trim()));
+                        newsList.forEach(news1 -> news1.setPubDate(news1.getPubDate().substring(0,17)));
+                        newsList.forEach(news1 -> news1.setDescription(news1.getDescription().substring(0, news1.getDescription().indexOf(".") + 1)));
+
+                        adapter.setNews(newsList);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -72,7 +63,6 @@ public class NewsListActivity extends AppCompatActivity {
                 });
 
 
-        adapter.setNews(news);
         recyclerView = findViewById(R.id.newsRecyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

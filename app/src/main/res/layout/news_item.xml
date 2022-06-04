@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
-
     app:cardBackgroundColor="#F3F3F3"
     app:cardCornerRadius="7dp">
 
@@ -20,7 +19,7 @@
             android:layout_height="0dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.65"
+            app:layout_constraintHeight_percent="0.55"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/test_pic" />
@@ -29,21 +28,23 @@
             android:id="@+id/newsHeader"
             style="@style/NewsHeaderTextView"
             android:layout_marginTop="10dp"
+            android:maxLines="3"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/HeaderPic"
             tools:text="Заголовок новости" />
 
+
         <TextView
             android:id="@+id/newsDescription"
             style="@style/NewsDescriptionTextView"
-            android:layout_margin="5dp"
-            android:maxLines="3"
+            android:maxLines="4"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newsHeader"
             tools:text="Тут само содержание новости. Тут само содержание новости. Тут само содержание новости. Тут само содержание новости. Тут само содержание новости. Тут само содержание новости." />
-
 
         <TextView
             android:id="@+id/newsPublishDate"
